@@ -1,0 +1,36 @@
+{
+  "id": "./",
+  "name": "PACE \u2014 Workout Studio",
+  "short_name": "PACE",
+  "description": "Strength splits, full-body circuits, EMOM, AMRAP, Tabata and drop sets.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone"
+  ],
+  "theme_color": "#10151e",
+  "background_color": "#0d121a",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "./icons/pace-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/pace-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/pace-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
