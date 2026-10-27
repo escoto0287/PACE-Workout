@@ -49,15 +49,26 @@ main{max-width:850px;padding:16px 18px 128px}.topbar{margin:0 0 17px}.version{fo
 .guidance-lookahead{margin-top:15px;border:1px solid #354756;background:#111a23;border-radius:16px;padding:12px;text-align:left}.guidance-lookahead h3{font-size:11px;color:#b4c3d3;letter-spacing:.1em;margin:0 0 10px}.guidance-future{display:grid;grid-template-columns:57px minmax(0,1fr);align-items:center;gap:10px;padding:8px 0;border-top:1px solid #2b3b49}.guidance-future:first-of-type{border:0}.guidance-future svg{width:57px;height:55px;background:#20303b;border-radius:10px}.guidance-future strong{display:block;font-size:13px;color:#f5f7f9}.guidance-future small{display:block;font-size:11px;color:#aab9c7;margin-top:3px}.guidance-future .future-label{font-size:10px;color:#c8ff69;letter-spacing:.08em;font-weight:900}
 @media(min-width:620px){.guidance-now{grid-template-columns:148px 1fr}.guidance-art{width:148px;height:132px}}@media(max-width:380px){.guidance-now{grid-template-columns:94px 1fr}.guidance-art{width:94px;height:94px}}
 </style>
+<style id="pace-5-2-guidance">
+.guided-release-tag{background:#c8ff69;color:#102017;border-radius:9px;padding:7px 11px;font-size:11px;font-weight:950;letter-spacing:.06em;margin:0 auto 10px;max-width:max-content}
+.guidance-metrics span{font-size:13px;line-height:1.2;padding:8px 11px;color:#f5ffe7;border-color:#709758;background:#253a2a}
+.guidance-metrics span:last-child{background:#c8ff69;color:#17250e;border-color:#c8ff69}
+.guidance-lookahead{border:2px solid #657f51}
+.guidance-lookahead h3{font-size:12px;color:#c8ff69}
+.guidance-future .future-label{font-size:12px}
+.guidance-future strong{font-size:15px}
+.guidance-now{border:2px solid #6d8a53}
+@media(max-width:530px){.run-card{padding:14px 12px 18px;border-radius:20px}.run-card h2{font-size:clamp(24px,7vw,34px);margin:10px 0 3px}.ring-wrap{height:226px;width:226px;margin:10px auto}.guidance-now{grid-template-columns:86px minmax(0,1fr);padding:9px;gap:10px;margin:10px 0}.guidance-art{width:86px;height:86px}.guidance-metrics{margin:8px 0}.guidance-metrics span{font-size:11px;padding:6px 9px}.guidance-lookahead{margin-top:8px}}
+</style>
 </head>
 <body>
 <main>
-<header class="topbar"><div class="brand"><span class="logo" aria-hidden="true">↗</span><span>PACE<span style="color:var(--accent)">.</span></span><span class="version">STUDIO 4.1</span></div><div class="top-note">MOVE MORE · SCROLL LESS</div></header>
+<header class="topbar"><div class="brand"><span class="logo" aria-hidden="true">↗</span><span>PACE<span style="color:var(--accent)">.</span></span><span class="version">STUDIO 5.2</span></div><div class="top-note">MOVE MORE · SCROLL LESS</div></header>
 <section id="builder-view">
   <div id="update-prompt" role="status"><div class="pwa-prompt-text"><strong>PACE update ready</strong><p>New version available; your saved workouts stay here.</p></div><button class="btn btn-primary btn-small pwa-prompt-button" id="apply-update">Update now</button></div>
   <div id="install-prompt"><div class="pwa-prompt-text"><strong>Install PACE on your phone</strong><p>Launch it from your home screen like an app.</p></div><button class="btn btn-primary btn-small pwa-prompt-button" id="install-app">Install</button></div>
   <nav class="workspace-tabs" aria-label="Workout navigation" id="workspace-tabs"><button class="workspace-tab active" data-panel="workout" aria-current="page">⚡ My workout</button><button class="workspace-tab" data-panel="library">◫ Templates</button><button class="workspace-tab" data-panel="schedule">▦ Two-week plan</button></nav>
-  <div id="panel-workout" class="workspace-panel">
+  <div id="panel-workout" class="workspace-panel"><div id="pace-release-note" role="note" style="padding:12px 14px;margin:5px 0 15px;border:1px solid #739b53;border-radius:12px;background:#203226;font-size:12px;color:#e1f8ce"><strong style="font-size:13px">PACE 5.2 · GUIDED RUNNER + LONGER STRENGTH</strong><div>Open <b>Templates → Strength splits</b> and load a refreshed session to get the four-block strength + cardio format. Your saved plans stay unchanged.</div></div>
     <div class="workout-hero">
       <div class="overline">READY WHEN YOU ARE <span id="active-duration" class="duration-label"></span></div>
       <input id="workout-name" class="workout-hero-title" maxlength="80" aria-label="Workout name" placeholder="Name your workout" />
@@ -107,7 +118,7 @@ main{max-width:850px;padding:16px 18px 128px}.topbar{margin:0 0 17px}.version{fo
   <div id="sheet-content" class="sheet-content"></div>
 </aside>
 <section id="run-view" class="hide" aria-live="off"><div class="hero-run"><div class="session-banner"><div><div class="small-heading" id="run-name">YOUR SESSION</div><strong id="run-position">Block 1</strong></div><button class="btn btn-ghost btn-small" id="leave-run">✕ End / Edit</button></div>
-<article class="run-card" id="run-card"><div class="phase-tag" id="phase-tag">WORK</div><h2 id="run-exercise">Pull-ups</h2><div class="run-subtitle" id="run-subtitle">Straight sets · Round 1</div>
+<article class="run-card" id="run-card"><div class="guided-release-tag">PACE 5.2 · GUIDED WORKOUT</div><div class="phase-tag" id="phase-tag">WORK</div><h2 id="run-exercise">Pull-ups</h2><div class="run-subtitle" id="run-subtitle">Straight sets · Round 1</div>
 <div id="guidance-metrics" class="guidance-metrics" aria-label="Exercise position and target"></div>
 <div class="guidance-now" id="guidance-now"><div id="guidance-art" class="guidance-art"></div><div class="guidance-copy"><div class="guidance-overline">MOVEMENT GUIDE</div><div class="guidance-title" id="guidance-movement">Get ready</div><div class="guidance-cue" id="guidance-cue"></div><div class="guidance-gear" id="guidance-gear"></div></div></div>
 <div class="ring-wrap"><svg viewBox="0 0 240 240" role="img" aria-label="Timer progress"><circle class="ring-bg" cx="120" cy="120" r="105"/><circle id="timer-ring" class="ring-fg" cx="120" cy="120" r="105" stroke-dasharray="659.734" stroke-dashoffset="0"/></svg><div class="ring-middle"><span class="big-count" id="run-timer">12</span><span class="count-unit" id="run-unit">REPS</span><span class="secondary-clock" id="run-elapsed">0:00 elapsed</span></div></div>
@@ -162,35 +173,44 @@ const PRESETS={
   ['emom','9-minute strength rotation',[M('Pull-ups or pulldowns','reps',5),M('Goblet squats','reps',10),M('Dumbbell shoulder press','reps',8),M('Glute bridges','reps',12),M('Dumbbell chest press','reps',10),M('Plank','time',25)],{minutes:9,window:60}],
   ['amrap','9-minute moving strength',[M('Single-arm rows','reps',12),M('Reverse lunges','reps',12),M('Incline push-ups','reps',10),M('Mountain climbers','reps',20)],{duration:540}],
   ['tabata','20/10 cardio finish',[M('Low-impact high knees'),M('Shadow boxing'),M('Fast feet')],{intervals:10,work:20,rest:10}]],blockRest:30},
- 'pull-a':{name:'Back + Biceps A',group:'split',level:'Strength',desc:'Vertical and horizontal pulling, then curls and core.',blocks:[
-  ['straight','Back foundation',[M('Pull-ups','reps',4),M('Lat pulldown','reps',10),M('Dumbbell rows','reps',10)],{rounds:3}],
-  ['drop','Descending dumbbell curls',[M('Dumbbell bicep curls','reps',12)],{rounds:3,dropRest:15}],
-  ['emom','6-minute pull / core',[M('Hammer curls','reps',10),M('Band face pulls','reps',12),M('Dead bug','reps',12)],{minutes:6,window:60}]],blockRest:35},
- 'push-a':{name:'Chest + Triceps A',group:'split',level:'Strength',desc:'Pressing mechanics, triceps isolation and an EMOM finish.',blocks:[
-  ['straight','Chest + triceps strength',[M('Dumbbell chest press','reps',10),M('Incline push-ups','reps',10),M('Cable triceps pushdown','reps',12)],{rounds:3}],
-  ['drop','Triceps drop stages',[M('Overhead triceps extensions','reps',12)],{rounds:3,dropRest:15}],
-  ['emom','8-minute push finisher',[M('Push-ups','reps',8),M('Cable triceps pushdown','reps',12)],{minutes:8,window:60}]],blockRest:35},
- 'legs-a':{name:'Legs + Shoulders A',group:'split',level:'Strength',desc:'Controlled squat, hinge and shoulder work.',blocks:[
-  ['straight','Legs + shoulders strength',[M('Goblet squats','reps',12),M('Dumbbell Romanian deadlift','reps',10),M('Dumbbell shoulder press','reps',10),M('Lateral raises','reps',12)],{rounds:3}],
-  ['emom','8-minute leg/core finish',[M('Reverse lunges','reps',12),M('Glute bridges','reps',14),M('Band pull-aparts','reps',12),M('Plank','time',25)],{minutes:8,window:60}]],blockRest:40},
- 'pull-b':{name:'Back + Biceps B',group:'split',level:'Strength',desc:'Different angles and slower controlled pulling.',blocks:[
-  ['straight','Pull variation',[M('Underhand lat pulldown','reps',10),M('Single-arm dumbbell row','reps',10),M('Band face pulls','reps',14)],{rounds:3}],
-  ['drop','Hammer curl descending reps',[M('Hammer curls','reps',12)],{rounds:4,dropRest:10}],
-  ['amrap','6-minute pull + trunk',[M('Cable curls','reps',10),M('Band rows','reps',12),M('Bird dog','reps',12)],{duration:360}]],blockRest:35},
- 'push-b':{name:'Chest + Triceps B',group:'split',level:'Strength',desc:'Floor press, push-up variation, and a steady finish.',blocks:[
-  ['straight','Press variation',[M('Dumbbell floor press','reps',10),M('Narrow push-ups','reps',8),M('Cable triceps pushdown','reps',12)],{rounds:3}],
-  ['drop','Chest press descending reps',[M('Dumbbell chest press','reps',12)],{rounds:3,dropRest:15}],
-  ['amrap','6-minute easy push circuit',[M('Incline push-ups','reps',8),M('Overhead triceps extension','reps',10),M('Dead bug','reps',12)],{duration:360}]],blockRest:35},
- 'legs-b':{name:'Legs + Shoulders B',group:'split',level:'Strength',desc:'Single-leg stability and shoulder endurance.',blocks:[
-  ['straight','Leg/shoulder variation',[M('Split squats','reps',8),M('Glute bridges','reps',14),M('Standing dumbbell press','reps',10),M('Lateral raises','reps',12)],{rounds:3}],
-  ['emom','8-minute leg + shoulder EMOM',[M('Goblet squats','reps',10),M('Band face pulls','reps',12),M('Step-ups','reps',10),M('Plank','time',25)],{minutes:8,window:60}]],blockRest:35}
+
+ 'pull-a':{name:'Back + Biceps A',group:'split',level:'Strength + conditioning',desc:'Four rounds of back strength, EZ-bar curls, an 8-minute EMOM and an 8-minute cardio finisher. Dumbbells + barbell.',blocks:[
+  ['straight','Back strength · 4 rounds',[M('Pull-ups','reps',4),M('Barbell bent-over rows','reps',10),M('Single-arm dumbbell rows','reps',10)],{rounds:4}],
+  ['drop','EZ-bar curls · descending',[M('EZ-bar biceps curls','reps',12)],{rounds:4,dropRest:20}],
+  ['emom','8-minute pull + trunk',[M('Hammer curls','reps',10),M('Dumbbell reverse flyes','reps',12),M('Dumbbell Romanian deadlift','reps',12),M('Dead bug','reps',12)],{minutes:8,window:60}],
+  ['tabata','8-minute cardio · 20/10',[M('Shadow boxing'),M('Fast feet'),M('Mountain climbers'),M('Step jacks')],{intervals:16,work:20,rest:10}]],blockRest:45},
+ 'push-a':{name:'Chest + Triceps A',group:'split',level:'Strength + conditioning',desc:'Four pressing rounds, EZ-bar triceps drops, an EMOM and eight minutes of cardio.',blocks:[
+  ['straight','Chest and triceps · 4 rounds',[M('Barbell floor press','reps',10),M('Dumbbell chest press','reps',10),M('Close-grip push-ups','reps',8),M('Dumbbell overhead triceps extensions','reps',12)],{rounds:4}],
+  ['drop','EZ-bar triceps · descending',[M('EZ-bar lying triceps extensions','reps',12)],{rounds:4,dropRest:20}],
+  ['emom','8-minute push + core',[M('Push-ups','reps',8),M('Overhead triceps extensions','reps',10),M('Plank','time',30),M('Dumbbell floor press','reps',10)],{minutes:8,window:60}],
+  ['tabata','8-minute cardio · 20/10',[M('Shadow boxing'),M('High knees'),M('Step jacks'),M('Mountain climbers')],{intervals:16,work:20,rest:10}]],blockRest:45},
+ 'legs-a':{name:'Legs + Shoulders A',group:'split',level:'Strength + conditioning',desc:'Four rounds of squats, hinges and pressing, followed by shoulder drops and a low-impact cardio finisher.',blocks:[
+  ['straight','Legs and shoulders · 4 rounds',[M('Goblet squats','reps',12),M('Dumbbell Romanian deadlift','reps',10),M('Dumbbell shoulder press','reps',10),M('Reverse lunges','reps',12)],{rounds:4}],
+  ['drop','Lateral raise · descending',[M('Dumbbell lateral raises','reps',12)],{rounds:3,dropRest:15}],
+  ['emom','8-minute legs + core',[M('Glute bridges','reps',14),M('Plank','time',30),M('Dumbbell goblet squats','reps',10),M('Band pull-aparts','reps',12)],{minutes:8,window:60}],
+  ['tabata','8-minute low-impact cardio',[M('Fast marching'),M('Shadow boxing'),M('Step jacks'),M('Standing high knees')],{intervals:16,work:20,rest:10}]],blockRest:45},
+ 'pull-b':{name:'Back + Biceps B',group:'split',level:'Strength + conditioning',desc:'Barbell and dumbbell pulls, hammer-curl drop sets, 8-minute AMRAP and cardio.',blocks:[
+  ['straight','Horizontal pull · 4 rounds',[M('Barbell bent-over rows','reps',8),M('Dumbbell reverse flyes','reps',12),M('Single-arm dumbbell rows','reps',10),M('EZ-bar biceps curls','reps',10)],{rounds:4}],
+  ['drop','Hammer curls · descending',[M('Hammer curls','reps',12)],{rounds:4,dropRest:20}],
+  ['amrap','8-minute back endurance',[M('Band rows','reps',12),M('Dumbbell curls','reps',10),M('Dead bug','reps',12)],{duration:480}],
+  ['tabata','8-minute cardio · 20/10',[M('Shadow boxing'),M('Fast feet'),M('Step jacks'),M('Mountain climbers')],{intervals:16,work:20,rest:10}]],blockRest:45},
+ 'push-b':{name:'Chest + Triceps B',group:'split',level:'Strength + conditioning',desc:'Barbell floor pressing, push-up variants, descending dumbbell loads, AMRAP and cardio.',blocks:[
+  ['straight','Press variation · 4 rounds',[M('Barbell floor press','reps',8),M('Dumbbell floor press','reps',10),M('Narrow push-ups','reps',10),M('Dumbbell triceps extensions','reps',12)],{rounds:4}],
+  ['drop','Dumbbell chest press · descending',[M('Dumbbell chest press','reps',12)],{rounds:4,dropRest:20}],
+  ['amrap','8-minute push endurance',[M('Incline push-ups','reps',10),M('Overhead triceps extensions','reps',10),M('Dead bug','reps',12)],{duration:480}],
+  ['tabata','8-minute cardio · 20/10',[M('Shadow boxing'),M('Step jacks'),M('High knees'),M('Fast feet')],{intervals:16,work:20,rest:10}]],blockRest:45},
+ 'legs-b':{name:'Legs + Shoulders B',group:'split',level:'Strength + conditioning',desc:'Single-leg stability, shoulder endurance, 8-minute EMOM and low-impact cardio.',blocks:[
+  ['straight','Lower body + press · 4 rounds',[M('Dumbbell split squats','reps',10),M('Dumbbell Romanian deadlift','reps',10),M('Standing dumbbell overhead press','reps',10),M('Dumbbell lateral raises','reps',12)],{rounds:4}],
+  ['drop','Weighted calf raise · descending',[M('Weighted calf raises','reps',15)],{rounds:4,dropRest:15}],
+  ['emom','8-minute lower + core',[M('Dumbbell squat to press','reps',8),M('Glute bridges','reps',15),M('Plank','time',30),M('Step-back lunges','reps',12)],{minutes:8,window:60}],
+  ['tabata','8-minute low-impact cardio',[M('Fast marching'),M('Shadow boxing'),M('Step jacks'),M('Standing high knees')],{intervals:16,work:20,rest:10}]],blockRest:45}
 };
 const SCHEDULES={
  full:{1:[['Mon','full-a'],['Tue','full-d'],['Wed',null],['Thu','full-b'],['Fri','full-c'],['Sat','full-e','optional'],['Sun',null]],2:[['Mon','full-c'],['Tue','full-d'],['Wed',null],['Thu','full-e'],['Fri','full-a'],['Sat','full-b','optional'],['Sun',null]]},
  split:{1:[['Mon','pull-a'],['Tue','push-a'],['Wed',null],['Thu','legs-a'],['Fri',null],['Sat','pull-b','optional swap focus'],['Sun',null]],2:[['Mon','push-b'],['Tue','pull-b'],['Wed',null],['Thu','legs-b'],['Fri',null],['Sat','push-a','optional swap focus'],['Sun',null]]}}
 // The fourth strength day is scheduled for Saturday; optional refers to exercise choice, not attendance.
 for(const week of [1,2]){for(const line of SCHEDULES.split[week])if(line[0]==='Sat')line[2]='fourth day · swap focus as needed';}
-function presetPlan(id){const item=PRESETS[id];if(!item)throw Error('Unknown preset');const blocks=item.blocks.map(row=>piece(...row));if(item.group==='split'){for(const b of blocks)if(b.mode==='drop')b.exercises.forEach(e=>e.repsPlan=b.rounds===4?'12,10,8,6':'12,10,8');}return {name:item.name,settings:{work:30,rest:item.group==='full'?15:25,roundRest:item.group==='full'?15:35,blockRest:item.blockRest||20,prep:5,sound:true,vibrate:false},blocks};}
+function presetPlan(id){const item=PRESETS[id];if(!item)throw Error('Unknown preset');const blocks=item.blocks.map(row=>piece(...row));if(item.group==='split'){for(const b of blocks)if(b.mode==='drop')b.exercises.forEach(e=>e.repsPlan=b.rounds===4?'12,10,8,6':'12,10,8');}return {name:item.name,settings:{work:30,rest:item.group==='full'?15:20,roundRest:item.group==='full'?15:45,blockRest:item.blockRest||20,prep:5,sound:true,vibrate:false},blocks};}
 function templateSeconds(plan){let sec=plan.settings.prep+Math.max(0,plan.blocks.length-1)*plan.settings.blockRest;let containsReps=false;for(const b of plan.blocks){if(b.mode==='emom')sec+=b.minutes*b.window;else if(b.mode==='amrap')sec+=b.duration;else if(b.mode==='tabata')sec+=b.intervals*b.work+Math.max(0,b.intervals-1)*b.rest;else containsReps=true;}return containsReps?null:sec;}
 function clockString(sec){return Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');}
 
@@ -336,17 +356,19 @@ function upcomingExercises(s){
  return out;
 }
 function renderGuidance(s){
- const actual=exerciseSnapshot(s,s.kind==='amrap'?run.amrapMove:0);
+ const preparing=s.kind==='prep'||s.kind==='rest'||(s.kind==='emom'&&run.emomFinished);
+ const waiting=upcomingExercises(s).filter(Boolean);
+ const actual=preparing?waiting[0]:exerciseSnapshot(s,s.kind==='amrap'?run.amrapMove:0);
  const info=movementInfo(actual?.name||'');
  $('guidance-now').style.display=actual?'grid':'none';
- if(actual){$('guidance-art').innerHTML=movementDiagram(actual.name);$('guidance-movement').textContent=actual.name;$('guidance-cue').textContent=info[1];$('guidance-gear').textContent='Equipment: '+info[2];}
+ if(actual){$('guidance-art').innerHTML=movementDiagram(actual.name);$('guidance-movement').textContent=(preparing?'Prepare: ':'')+actual.name;$('guidance-cue').textContent=info[1];$('guidance-gear').textContent='Equipment: '+info[2];}
  const metrics=[];
  if(s.blockIndex!==undefined)metrics.push('Block '+(s.blockIndex+1)+'/'+s.blockTotal);
  if(s.roundTotal)metrics.push((s.kind==='emom'?'Interval ':s.method==='drop'?'Stage ':'Round ')+s.round+'/'+s.roundTotal);
  if(s.kind==='amrap'){metrics.push('AMRAP '+Math.ceil(s.duration/60)+' min');metrics.push(run.amrapRounds+' rounds finished');metrics.push('Move '+(run.amrapMove+1)+'/'+s.exercises.length);}
  if(actual)metrics.push('Target '+actual.target);
  $('guidance-metrics').innerHTML=metrics.map(x=>'<span>'+esc(x)+'</span>').join('');
- const upcoming=upcomingExercises(s).filter(Boolean);
+ const upcoming=(preparing?waiting.slice(1):waiting);
  $('guidance-future-list').innerHTML=upcoming.map((e,i)=>{const eq=movementInfo(e.name)[2];return '<div class="guidance-future">'+movementDiagram(e.name)+'<div><span class="future-label">'+(i?'THEN':'UP NEXT')+'</span><strong>'+esc(e.name)+'</strong><small>'+esc(e.target)+' · '+esc(eq)+'</small></div></div>';}).join('')||'<div class="tiny">Final movement — finish strong.</div>';
 }
 
@@ -408,14 +430,14 @@ function persistChecks(){try{localStorage.setItem(CHECK,JSON.stringify(checks));
 function storeMine(){try{localStorage.setItem(LIB,JSON.stringify(mine));}catch(e){}}
 function renderLibrary(){
  document.querySelectorAll('.focus-tab').forEach(b=>b.classList.toggle('selected',b.dataset.focus===focus));document.querySelectorAll('.week-tab').forEach(b=>b.classList.toggle('selected',Number(b.dataset.week)===week));
- $('focus-intro').textContent=focus==='full'?'Four core sessions + a fifth optional session. Alternate harder and easier days; all built-in full-body sessions have fixed timers under 25 minutes, including rests.':'Four weekly split sessions. Back + biceps, chest + triceps, legs + shoulders, then repeat/rotate focus. Rep-based sets have no hard time cap; adjust rest and pace as needed.';
+ $('focus-intro').textContent=focus==='full'?'Four core sessions + a fifth optional session. Alternate harder and easier days; all built-in full-body sessions have fixed timers under 25 minutes, including rests.':'Four weekly split sessions. Back + biceps, chest + triceps, legs + shoulders, then repeat/rotate focus. Strength + timed conditioning finishers (around 25–40 minutes depending on your rep pace). All six refreshed presets have four working blocks; load a new template to use the changes.';
  renderSchedule();const ids=Object.keys(PRESETS).filter(id=>PRESETS[id].group===focus);$('template-count').textContent=`· ${ids.length} choices`;
  $('templates').innerHTML=ids.map(id=>{const p=PRESETS[id],plan=presetPlan(id),fixed=templateSeconds(plan),duration=fixed?clockString(fixed)+' fixed':'reps-paced',methods=[...new Set(p.blocks.map(x=>modes[x[0]].label))].join(' · ');
  return `<article class="template-card"><div class="template-top"><span class="template-type">${esc(p.level.toUpperCase())}</span><span class="template-time">${duration}</span></div><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><div class="method-summary">${esc(methods)} · ${p.blocks.length} blocks</div><div class="template-actions"><button class="btn btn-primary btn-small" data-template="${id}" data-use="1">Use & edit →</button><button class="btn btn-small" data-template="${id}" data-preview="1">See exercises</button></div></article>`;}).join('');
  if(previewId&&PRESETS[previewId]?.group===focus)renderPreview(previewId);else{$('template-preview').classList.add('hide');previewId=null;}
 }
-function renderSchedule(){let count=0;const rows=SCHEDULES[focus][week];const schedule=rows.map(([day,id,extra])=>{const slot=`${focus}-${week}-${day}`,checked=!!checks[slot];if(checked)count++;const p=PRESETS[id];return `<div class="week-day ${id?'':'restday'} ${checked?'done':''}"><span class="day">${day}</span>${id?`<input type="checkbox" class="day-check" data-check="${slot}" ${checked?'checked':''} aria-label="Mark ${day} complete"/>`:'<span>·</span>'}<div><div class="wk-title">${id?esc(p.name):'Rest / recovery'}</div>${id?`<div class="wk-meta">${p.group==='full'?clockString(templateSeconds(presetPlan(id)))+' fixed timer':'Rep-paced'}${extra?' · '+esc(extra):''}</div>`:''}</div>${id?`<button class="btn btn-small" data-template="${id}" data-slot="${slot}">Open</button>`:'<span class="tiny">Rest</span>'}</div>`;}).join('');$('week-schedule').innerHTML=`<div class="tiny" style="margin-bottom:5px">${count} of ${rows.filter(x=>x[1]).length} planned days checked · mark completed days manually or finish a launched session</div>`+schedule;}
-function renderPreview(id){const p=PRESETS[id];previewId=id;const plan=presetPlan(id),secs=templateSeconds(plan);$('template-preview').classList.remove('hide');$('template-preview').innerHTML=`<div class="template-top"><h3>${esc(p.name)}</h3><button class="btn btn-small" data-close-preview="1">✕ Close</button></div><div class="tiny">${secs?clockString(secs)+' timer including all rests':'Reps-paced workout, duration varies'} · every exercise and target is editable</div><div class="preview-columns">${plan.blocks.map(b=>`<div class="preview-block"><h4>${esc(b.name)}</h4><div class="muted">${esc(modes[b.mode].label)} · ${b.mode==='emom'?b.minutes+' × '+b.window+' sec':b.mode==='amrap'?Math.floor(b.duration/60)+' min':b.mode==='tabata'?b.intervals+' × '+b.work+'/'+b.rest+' sec':b.rounds+' rounds'}</div><ul>${b.exercises.map(e=>`<li>${esc(e.name)}${b.mode!=='tabata'?' · '+(e.type==='time'?e.target+'s':e.target+' reps'):''}</li>`).join('')}</ul></div>`).join('')}</div><button class="btn btn-primary btn-small" data-template="${id}" data-use="1">Use this plan →</button>`;}
+function renderSchedule(){let count=0;const rows=SCHEDULES[focus][week];const schedule=rows.map(([day,id,extra])=>{const slot=`${focus}-${week}-${day}`,checked=!!checks[slot];if(checked)count++;const p=PRESETS[id];return `<div class="week-day ${id?'':'restday'} ${checked?'done':''}"><span class="day">${day}</span>${id?`<input type="checkbox" class="day-check" data-check="${slot}" ${checked?'checked':''} aria-label="Mark ${day} complete"/>`:'<span>·</span>'}<div><div class="wk-title">${id?esc(p.name):'Rest / recovery'}</div>${id?`<div class="wk-meta">${p.group==='full'?clockString(templateSeconds(presetPlan(id)))+' fixed timer':'25–40 min · reps-paced'}${extra?' · '+esc(extra):''}</div>`:''}</div>${id?`<button class="btn btn-small" data-template="${id}" data-slot="${slot}">Open</button>`:'<span class="tiny">Rest</span>'}</div>`;}).join('');$('week-schedule').innerHTML=`<div class="tiny" style="margin-bottom:5px">${count} of ${rows.filter(x=>x[1]).length} planned days checked · mark completed days manually or finish a launched session</div>`+schedule;}
+function renderPreview(id){const p=PRESETS[id];previewId=id;const plan=presetPlan(id),secs=templateSeconds(plan);$('template-preview').classList.remove('hide');$('template-preview').innerHTML=`<div class="template-top"><h3>${esc(p.name)}</h3><button class="btn btn-small" data-close-preview="1">✕ Close</button></div><div class="tiny">${secs?clockString(secs)+' timer including all rests':'Approx. 25–40 min including the timed finisher; duration varies with rep pace'} · every exercise and target is editable</div><div class="preview-columns">${plan.blocks.map(b=>`<div class="preview-block"><h4>${esc(b.name)}</h4><div class="muted">${esc(modes[b.mode].label)} · ${b.mode==='emom'?b.minutes+' × '+b.window+' sec':b.mode==='amrap'?Math.floor(b.duration/60)+' min':b.mode==='tabata'?b.intervals+' × '+b.work+'/'+b.rest+' sec':b.rounds+' rounds'}</div><ul>${b.exercises.map(e=>`<li>${esc(e.name)}${b.mode!=='tabata'?' · '+(e.type==='time'?e.target+'s':e.target+' reps'):''}</li>`).join('')}</ul></div>`).join('')}</div><button class="btn btn-primary btn-small" data-template="${id}" data-use="1">Use this plan →</button>`;}
 function loadTemplate(id,slot){if(!PRESETS[id])return;const prompt=`Load “${PRESETS[id].name}” as your editable session? Your current unsaved-by-name editor plan will be replaced. Use “Save current plan” first if you want a named copy.`;if(!confirm(prompt))return;workout=presetPlan(id);selectedScheduleSlot=slot||null;save();render();renderLibrary();switchPanel('workout');}
 $('focus-tabs').addEventListener('click',ev=>{const b=ev.target.closest('[data-focus]');if(b){focus=b.dataset.focus;previewId=null;renderLibrary();}});
 document.querySelectorAll('[data-week]').forEach(b=>b.addEventListener('click',()=>{week=Number(b.dataset.week);renderLibrary();}));
