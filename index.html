@@ -41,6 +41,14 @@ main{max-width:850px;padding:16px 18px 128px}.topbar{margin:0 0 17px}.version{fo
 .pwa-prompt-button{white-space:nowrap;min-height:37px}
 @media(max-width:420px){#install-prompt,#update-prompt{padding:9px 10px}.pwa-prompt-text strong{font-size:12px}}
 </style>
+<style id="pace-guidance-styles">
+.guidance-now{margin:15px 0 10px;display:grid;grid-template-columns:112px 1fr;align-items:center;gap:13px;padding:12px;background:#111b24;border:1px solid #364756;border-radius:16px;text-align:left}
+.guidance-art{width:112px;height:110px;border-radius:13px;overflow:hidden;background:#20303b;display:grid;place-items:center}
+.guidance-art svg{width:100%;height:100%}.guidance-copy{min-width:0}.guidance-overline{color:#c8ff69;font-size:10px;letter-spacing:.1em;font-weight:850;text-transform:uppercase}.guidance-title{font-size:15px;font-weight:850;margin:4px 0}.guidance-cue{font-size:12px;color:#d2dce7;line-height:1.45}.guidance-gear{font-size:11px;color:#a9bac8;margin-top:6px}
+.guidance-metrics{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:8px 0}.guidance-metrics span{font-size:11px;font-weight:800;background:#24323e;border:1px solid #415464;padding:5px 9px;border-radius:999px}
+.guidance-lookahead{margin-top:15px;border:1px solid #354756;background:#111a23;border-radius:16px;padding:12px;text-align:left}.guidance-lookahead h3{font-size:11px;color:#b4c3d3;letter-spacing:.1em;margin:0 0 10px}.guidance-future{display:grid;grid-template-columns:57px minmax(0,1fr);align-items:center;gap:10px;padding:8px 0;border-top:1px solid #2b3b49}.guidance-future:first-of-type{border:0}.guidance-future svg{width:57px;height:55px;background:#20303b;border-radius:10px}.guidance-future strong{display:block;font-size:13px;color:#f5f7f9}.guidance-future small{display:block;font-size:11px;color:#aab9c7;margin-top:3px}.guidance-future .future-label{font-size:10px;color:#c8ff69;letter-spacing:.08em;font-weight:900}
+@media(min-width:620px){.guidance-now{grid-template-columns:148px 1fr}.guidance-art{width:148px;height:132px}}@media(max-width:380px){.guidance-now{grid-template-columns:94px 1fr}.guidance-art{width:94px;height:94px}}
+</style>
 </head>
 <body>
 <main>
@@ -100,9 +108,11 @@ main{max-width:850px;padding:16px 18px 128px}.topbar{margin:0 0 17px}.version{fo
 </aside>
 <section id="run-view" class="hide" aria-live="off"><div class="hero-run"><div class="session-banner"><div><div class="small-heading" id="run-name">YOUR SESSION</div><strong id="run-position">Block 1</strong></div><button class="btn btn-ghost btn-small" id="leave-run">✕ End / Edit</button></div>
 <article class="run-card" id="run-card"><div class="phase-tag" id="phase-tag">WORK</div><h2 id="run-exercise">Pull-ups</h2><div class="run-subtitle" id="run-subtitle">Straight sets · Round 1</div>
+<div id="guidance-metrics" class="guidance-metrics" aria-label="Exercise position and target"></div>
+<div class="guidance-now" id="guidance-now"><div id="guidance-art" class="guidance-art"></div><div class="guidance-copy"><div class="guidance-overline">MOVEMENT GUIDE</div><div class="guidance-title" id="guidance-movement">Get ready</div><div class="guidance-cue" id="guidance-cue"></div><div class="guidance-gear" id="guidance-gear"></div></div></div>
 <div class="ring-wrap"><svg viewBox="0 0 240 240" role="img" aria-label="Timer progress"><circle class="ring-bg" cx="120" cy="120" r="105"/><circle id="timer-ring" class="ring-fg" cx="120" cy="120" r="105" stroke-dasharray="659.734" stroke-dashoffset="0"/></svg><div class="ring-middle"><span class="big-count" id="run-timer">12</span><span class="count-unit" id="run-unit">REPS</span><span class="secondary-clock" id="run-elapsed">0:00 elapsed</span></div></div>
 <div class="session-hint" id="session-hint">Tap once you've finished your repetitions.</div>
-<div class="next-strip"><div><div class="overline">UP NEXT</div><div class="next-name" id="next-name">Rest</div></div><div class="next-details" id="next-details">20s</div></div></article>
+<div class="next-strip"><div><div class="overline">UP NEXT</div><div class="next-name" id="next-name">Rest</div></div><div class="next-details" id="next-details">20s</div></div><div id="guidance-lookahead" class="guidance-lookahead" aria-label="Upcoming exercises"><h3>COMING UP · PREPARE YOUR EQUIPMENT</h3><div id="guidance-future-list"></div></div></article>
 <div class="run-buttons"><button class="btn" id="previous-step">← Back</button><button class="btn btn-primary" id="main-action">✓ Reps done</button><button class="btn" id="next-step">Skip →</button></div>
 <div class="progress-wrap"><div class="progress-meta"><span id="progress-steps">Block 1</span><span id="progress-clock">0:00 elapsed</span></div><div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div></div>
 <div class="run-options"><button class="btn btn-small" id="pause-secondary">Ⅱ Pause clock</button><label class="toggle"><input type="checkbox" id="sound-toggle" checked/> Sound</label><label class="toggle"><input type="checkbox" id="vibrate-toggle"/> Vibration</label><span class="tiny">Browser must stay active for alerts</span></div></div></section>
@@ -281,6 +291,65 @@ function finish(){if(!run)return;run.done=true;if(selectedScheduleSlot){checks[s
 function subName(s){if(!s)return 'Workout complete';if(s.kind==='prep')return 'Get ready';if(s.kind==='rest')return s.name;if(s.kind==='amrap')return s.exercises[0]?.name||'AMRAP';return s.name;}
 function subDetail(s){if(!s)return ' ';if(s.kind==='amrap')return fmt(s.duration*1000)+' cap';if(s.kind==='emom')return `${s.duration}s window`;if(s.kind==='work')return s.type==='reps'?s.target+' reps':s.target+' sec';return s.duration+' sec';}
 function current(){return run?.seq[run.index];}
+
+// Visual movement guide. No network images: diagrams and cues work offline.
+const GUIDE_RULES=[
+[/pull.up|chin.up|dead hang|inverted row/i,['bar','Pull your chest toward the bar; lower under control.','Pull-up bar']],
+[/squat.*reach/i,['squat','Sit your hips back, then stand and reach overhead.','Bodyweight / floor space']],
+[/squat|lunge|split squat|step.up/i,['squat','Keep your knees tracking over your feet; move with control.','Open floor space']],
+[/plank|push.up|mountain climber|burpee/i,['floor','Brace your core and keep a stable shoulder position.','Floor / mat']],
+[/chest press|floor press|flye/i,['press','Keep wrists stacked over elbows; press smoothly.','Dumbbells / bench or floor']],
+[/row|pulldown|pull.apart/i,['pull','Pull elbows back without shrugging your shoulders.','Dumbbells / cable / band']],
+[/curl|tricep|extension|pushdown/i,['curl','Keep upper arms steady; control the lowering phase.','Dumbbells / band / cable']],
+[/shoulder press|lateral raise|front raise/i,['press','Stay tall and lift without arching your lower back.','Dumbbells / band']],
+[/deadlift|glute bridge|calf raise/i,['hinge','Move through the hips with a braced core.','Dumbbells / floor space']],
+[/jumping jack|high knee|fast feet|marching|running/i,['cardio','Stay light on your feet and find a sustainable rhythm.','Open floor space']]
+];
+function movementInfo(name){const found=GUIDE_RULES.find(rule=>rule[0].test(name||''));return found?found[1]:['neutral','Move deliberately and use a comfortable range of motion.','Check equipment before starting'];}
+function movementDiagram(name){
+ const [pose]=movementInfo(name);
+ const base='<circle cx="60" cy="19" r="9" fill="none" stroke="#c8ff69" stroke-width="4"/>';
+ const paths={
+ squat:'M60 29 L60 58 L43 75 L28 75 M60 58 L77 75 L92 75 M60 41 L42 30 M60 41 L78 30',
+ floor:'M22 63 L47 55 L82 59 L103 67 M47 55 L46 76 M82 59 L82 80',
+ bar:'M20 11 H100 M60 28 L60 56 L42 78 M60 56 L78 78 M60 37 L43 12 M60 37 L77 12',
+ press:'M60 29 L60 62 L43 85 M60 62 L77 85 M60 41 L37 31 L37 9 M60 41 L83 31 L83 9',
+ pull:'M60 29 L60 62 L43 84 M60 62 L77 84 M60 41 L37 51 L22 39 M60 41 L83 51 L98 39',
+ curl:'M60 29 L60 62 L43 85 M60 62 L77 85 M60 39 L43 51 L37 34 M60 39 L77 51 L83 34',
+ hinge:'M60 29 L72 54 L44 79 M72 54 L84 80 M65 39 L82 60',
+ cardio:'M60 29 L60 57 L40 80 M60 57 L84 70 M60 40 L36 30 M60 40 L83 26',
+ neutral:'M60 29 L60 62 L43 85 M60 62 L77 85 M60 40 L39 55 M60 40 L81 55'
+ };
+ const head=pose==='floor'?'<circle cx="15" cy="56" r="8" fill="none" stroke="#c8ff69" stroke-width="4"/>':base;
+ return '<svg viewBox="0 0 120 100" role="img" aria-label="Simplified '+esc(name)+' movement illustration" xmlns="http://www.w3.org/2000/svg"><path d="M13 91 H107" stroke="#526875" stroke-width="2"/>'+head+'<path d="'+paths[pose]+'" fill="none" stroke="#c8ff69" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+}
+function exerciseSnapshot(s,amrapMove){
+ if(!s)return null;
+ if(s.kind==='amrap'){const e=s.exercises[amrapMove||0];return e?{name:e.name,target:e.type==='reps'?e.target+' reps':e.target+'s',type:e.type}:null;}
+ if(s.kind==='work'||s.kind==='emom')return {name:s.name,target:s.kind==='emom'?(s.type==='reps'?s.target+' reps':s.target+'s'):(s.tabata?s.duration+'s work':s.type==='reps'?s.target+' reps':s.target+'s'),type:s.type};
+ return null;
+}
+function upcomingExercises(s){
+ const out=[];
+ if(s.kind==='amrap'&&s.exercises.length){for(let offset=1;offset<=2;offset++){const idx=(run.amrapMove+offset)%s.exercises.length;out.push(exerciseSnapshot(s,idx));}}
+ else {for(let i=run.index+1;i<run.seq.length&&out.length<2;i++){const next=exerciseSnapshot(run.seq[i]);if(next)out.push(next);}}
+ return out;
+}
+function renderGuidance(s){
+ const actual=exerciseSnapshot(s,s.kind==='amrap'?run.amrapMove:0);
+ const info=movementInfo(actual?.name||'');
+ $('guidance-now').style.display=actual?'grid':'none';
+ if(actual){$('guidance-art').innerHTML=movementDiagram(actual.name);$('guidance-movement').textContent=actual.name;$('guidance-cue').textContent=info[1];$('guidance-gear').textContent='Equipment: '+info[2];}
+ const metrics=[];
+ if(s.blockIndex!==undefined)metrics.push('Block '+(s.blockIndex+1)+'/'+s.blockTotal);
+ if(s.roundTotal)metrics.push((s.kind==='emom'?'Interval ':s.method==='drop'?'Stage ':'Round ')+s.round+'/'+s.roundTotal);
+ if(s.kind==='amrap'){metrics.push('AMRAP '+Math.ceil(s.duration/60)+' min');metrics.push(run.amrapRounds+' rounds finished');metrics.push('Move '+(run.amrapMove+1)+'/'+s.exercises.length);}
+ if(actual)metrics.push('Target '+actual.target);
+ $('guidance-metrics').innerHTML=metrics.map(x=>'<span>'+esc(x)+'</span>').join('');
+ const upcoming=upcomingExercises(s).filter(Boolean);
+ $('guidance-future-list').innerHTML=upcoming.map((e,i)=>{const eq=movementInfo(e.name)[2];return '<div class="guidance-future">'+movementDiagram(e.name)+'<div><span class="future-label">'+(i?'THEN':'UP NEXT')+'</span><strong>'+esc(e.name)+'</strong><small>'+esc(e.target)+' · '+esc(eq)+'</small></div></div>';}).join('')||'<div class="tiny">Final movement — finish strong.</div>';
+}
+
 function draw(){if(!run||run.done)return;const s=current();const isPrep=s.kind==='prep',isRest=s.kind==='rest',isEmom=s.kind==='emom',isAmrap=s.kind==='amrap',rep=s.kind==='work'&&s.type==='reps',nxt=run.seq[run.index+1];
  $('run-card').className='run-card'+(isRest?' rest':'')+(isPrep?' prep':'')+(isEmom?' emom':'')+(isAmrap?' amrap':'');
  $('run-name').textContent=(workout.name||'YOUR WORKOUT').toUpperCase();$('run-position').textContent=s.blockIndex===undefined?'Get ready':`Block ${s.blockIndex+1} of ${s.blockTotal} · ${modes[s.method].label}`;
@@ -295,7 +364,7 @@ function draw(){if(!run||run.done)return;const s=current();const isPrep=s.kind==
  if(isAmrap&&s.exercises.length){const i=(run.amrapMove+1)%s.exercises.length;const e=s.exercises[i];$('next-name').textContent=e.name||'Exercise';$('next-details').textContent=e.type==='reps'?`${e.target} reps`:`${e.target} sec`;
  }else if(isEmom&&run.index+1<run.seq.length&&run.seq[run.index+1].kind==='emom'){$('next-name').textContent=subName(nxt);$('next-details').textContent=subDetail(nxt);}
  else {$('next-name').textContent=subName(nxt);$('next-details').textContent=subDetail(nxt);}
- $('previous-step').disabled=run.index===0;updateClock();}
+ renderGuidance(s);$('previous-step').disabled=run.index===0;updateClock();}
 function updateClock(){if(!run||run.done)return;const s=current(),t=elapsed(),duration=stepDuration(s),isAmrap=s.kind==='amrap',isEmom=s.kind==='emom',rep=s.kind==='work'&&s.type==='reps',isRepLike=rep||(isEmom&&s.type==='reps'&&!run.emomFinished)||(isAmrap&&s.exercises[run.amrapMove]?.type==='reps');
  let large='',unit='',small='',portion=0;
  if(isAmrap){const e=s.exercises[run.amrapMove];large=fmt(Math.max(0,duration-t)+999);unit='AMRAP TIME LEFT';small=`${e.type==='reps'?e.target+' reps':Math.max(0,Math.ceil((e.target*1000-(t-run.amrapStart))/1000))+'s for this move'} · ${run.amrapRounds} full rounds`;portion=duration?Math.max(0,(duration-t)/duration):0;}
