@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pace-workout-studio-v4-1-1';
+const CACHE_NAME = 'pace-workout-studio-v5-guided-1';
 const APP_ASSETS = ['./', './index.html', './manifest.webmanifest', './pace-192.png', './pace-512.png', './pace-maskable-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_ASSETS)));
